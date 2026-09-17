@@ -12,9 +12,9 @@ The simulation can be stopped once the desired convergence has been reached.
 
 The program calculates the Lyapunov exponents of a system representing the two-dimensional motion of phytoplankton in an alternating sinusoidal flow.
 
-The exponents are then used to calculate the lyapunov dimension.
+The exponents are then used to calculate the Lyapunov dimension.
 
-The calculation is performed at the same time for different values of the system parameter $\psi$.
+The calculation is performed for different values of the system parameter $\psi$.
 
 ## Dynamical Model
 
@@ -98,7 +98,7 @@ The method consists of evolving the particle trajectory together with three tang
 
 At each iteration of the cycle, the tangent vectors are orthogonalized using the Gram-Schmidt procedure and then normalized.
 
-## Lyapunov dimension
+## Lyapunov Dimension
 
 The Lyapunov dimension can be used as an estimate of the fractal dimension of an attractor.
 It is calculated from the Lyapunov exponents using the Kaplan-Yorke formula.
@@ -110,12 +110,13 @@ $$
 where $j$ is the largest integer such that:
 
 $$
-\left\{
-\begin{aligned}
-\displaystyle\sum_{i=1}^{j}\lambda_i &\geq 0 \\
-\displaystyle\sum_{i=1}^{j+1}\lambda_i &< 0
-\end{aligned}
-\right.
+\sum_{i=1}^{j}\lambda_i \geq 0
+$$
+
+and
+
+$$
+\sum_{i=1}^{j+1}\lambda_i < 0
 $$
 
 where $\lambda_i$ are the Lyapunov exponents, ordered from largest to smallest.
@@ -133,7 +134,7 @@ The numerical methods used in the calculation are:
 The source code is organized as follows:
 
 ```text
-lyapunov/
+lyapunov-phytoplankton/
 ├── README.md
 ├── src/
 │   ├── lyapunov.cpp
@@ -148,12 +149,14 @@ lyapunov/
 │   ├── tangent_normalization.cpp
 │   ├── tangent_normalization.h
 │   └── config.h
-└── results/
-    ├── lyapunov_exponents_group1.dat
-    ├── lyapunov_exponents_group2.dat
-    ├── lyapunov_exponents_group3.dat
-    ├── lyapunov_exponents_group4.dat
-    └── lyapunov_dimension.dat
+├── results/
+│   ├── lyapunov_exponents_group1.dat
+│   ├── lyapunov_exponents_group2.dat
+│   ├── lyapunov_exponents_group3.dat
+│   ├── lyapunov_exponents_group4.dat
+│   └── lyapunov_dimension.dat
+├── plot_dimensioni.py
+└── plot_lyapunov.py
 ```
 
 ### Source Files
@@ -175,7 +178,7 @@ The Lyapunov exponent results are divided into four files for easier data manage
 * `lyapunov_exponents_group2.dat` contains the Lyapunov exponents for the second group of parameter values.
 * `lyapunov_exponents_group3.dat` contains the Lyapunov exponents for the third group of parameter values.
 * `lyapunov_exponents_group4.dat` contains the Lyapunov exponents for the fourth group of parameter values.
-* `lyapunov_dimension.dat` contains the corresponding lyapunovdimension for all parameter values.
+* `lyapunov_dimension.dat` contains the corresponding Lyapunov dimension for all parameter values.
 
 The following figures show the convergence of the numerical estimates
 obtained during the simulation.
@@ -187,12 +190,12 @@ for $\psi = 1$.
 
 ![Convergence of the Lyapunov exponents](results/lyapunov_exponents_convergence_psi1.png)
 
-### lyapunov Dimension
+### Lyapunov Dimension
 
-The figure below shows the convergence of the lyapunov dimension
+The figure below shows the convergence of the Lyapunov dimension
 for selected values of $\psi$.
 
-![Convergence of the lyapunov dimension](results/dimensioni_lyapunov.png)
+![Convergence of the Lyapunov dimension](results/dimensioni_lyapunov.png)
 
 ## Background
 
