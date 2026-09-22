@@ -1,0 +1,19 @@
+# Compiled executable
+evolution
+
+# Editor backup files
+*~
+
+# Windows executable
+*.exe
+
+# Generated simulation data
+results/*
+!results/starting_configuration
+!results/data_file_1
+!results/data_file_10
+
+# Generated plots
+plots/*
+!plots/dplot_1.jpeg
+!plots/dplot_10.jpeg
